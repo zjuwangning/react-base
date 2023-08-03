@@ -1,0 +1,54 @@
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 5px;
+    width: 100vw;
+}
+
+.login-page {
+    width: 100vw;
+    height: 100vh;
+    background-color: #87BEFA;
+}
+
+
+.login-div {
+    padding: 25px;
+    width: 400px;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    box-shadow: rgba(30, 30, 30, 0.4) 6px 6px;
+}
+
+.login-title {
+    margin-bottom: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-form-button {
+    width: 100%;
+    margin: 12px 0;
+}
+
+.login-title {
+    font-size: 28px;
+    text-align: center;
+}
+
+.connect {
+    margin-top: 40vh;
+    padding: 40px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+
