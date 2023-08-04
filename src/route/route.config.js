@@ -5,8 +5,8 @@ import IndexLayouts from "../layouts/IndexLayouts";
 import BasicLayouts from "../layouts/BasicLayouts";
 
 import Homepage from "../pages/homepage";
-import Character from "../pages/handbook/character";
-import Relic from "../pages/handbook/relic";
+
+import MultiTransfer from '../pages/entry/MultiTransfer'
 
 
 const NoMatch = () => (
@@ -29,8 +29,8 @@ export const routes = [
 // 后台页面路由
 export const basicRoutes = [
 	{path: '/homepage', element: <Homepage/>},
-	{path: '/handbook/character', element: <Character/>},
-	{path: '/handbook/relic', element: <Relic/>},
+
+	{path: '/entry/MultiTransfer', element: <MultiTransfer/>},
 
 	{path: '*', element: <NoMatch/>}
 ];

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { DashboardOutlined, UploadOutlined, ShareAltOutlined, UserOutlined, SettingOutlined, SnippetsOutlined, ApartmentOutlined } from '@ant-design/icons';
+import { DashboardOutlined, UploadOutlined, DownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate, useLocation } from 'react-router-dom'
 import PubSub from "pubsub-js";
 import { SubEvent } from '../enum'
-import homeIcon from '../../images/homepage.png'
-import userIcon from '../../images/user.png'
 import '../index.css'
 
 const rootSubmenuKeys = ['/credentials'];
@@ -60,13 +58,24 @@ const MenuList = () => {
 
 	const list = [
 		{
-			key: '/homepage', icon: (<img src={homeIcon} alt="" style={{height: '20px'}}/>), label: '首页'
+			key: '/homepage', icon: <DashboardOutlined />, label: '首页'
 		},
 		{
-			key: '/handbook', icon: (<img src={userIcon} alt="" style={{height: '20px'}}/>), label: '图鉴',
+			key: '/entry', icon: <UploadOutlined />, label: '数据录入',
 			children: [
-				{key: '/handbook/character', label: '角色图鉴'},
-				{key: '/handbook/relic', label: '遗器图鉴'}
+				{key: '/entry/MultiTransfer', label: '复用穿梭框'},
+			]
+		},
+		{
+			key: '/display', icon: <DownloadOutlined />, label: '数据展示',
+			children: [
+				{key: '/display/MultiTransfer', label: '复用穿梭框'},
+			]
+		},
+		{
+			key: '/feedback', icon: <QuestionCircleOutlined />, label: '反馈',
+			children: [
+				{key: '/feedback/MultiTransfer', label: '复用穿梭框'},
 			]
 		},
 	]

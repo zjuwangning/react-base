@@ -3,9 +3,8 @@ const SubEvent = {
 }
 
 const BreadcrumbData = {
-	'handbook': {name: '图鉴', isPage: false},
-	'character': {name: '角色图鉴', isPage: true},
-	'relic': {name: '遗器图鉴', isPage: true},
+	'entry': {name: '数据录入', isPage: false},
+	'MultiTransfer': {name: '复用穿梭框', isPage: true},
 }
 
 export { SubEvent, BreadcrumbData }
