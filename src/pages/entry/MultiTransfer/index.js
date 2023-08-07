@@ -48,9 +48,9 @@ function Index() {
 
 	return (
 		<div className={'full-page'}>
-			Ant Design 的 Transfer 穿梭框组件只支持一对一的两栏中移动，无法应对一对多及多对多的数据排列场景。
+			Ant Design 的 Transfer 穿梭框组件只支持一对一的两栏中移动，无法解决一对多及多对多的问题。
 			<div style={{height: '30px'}}/>
-			<MultiTransfer data={data}/>
+			<MultiTransfer data={data} width={400}/>
 		</div>
 	);
 }

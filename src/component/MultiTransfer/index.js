@@ -28,14 +28,14 @@ class MultiTransfer extends Component {
 		// 主框样式
 		mode: 'auto',   // 高度模式 默认为auto自动计算 根据目标框体的高度自动计算源框体高度
 		sHeight: 180,   // 源框体高度 当mode为auto时无效
-		tHeight: 180,   // 目标框体高度
+		height: 180,   // 目标框体高度
 		width: 300,     // 框体宽度
 	};
 	static propTypes = {
 		data: PropTypes.object,
 		mode: PropTypes.string,
 		sHeight: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
-		tHeight: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
+		height: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
 		width: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
 	};
 
@@ -73,7 +73,7 @@ class MultiTransfer extends Component {
 
 	render() {
 		const { data } = this.state;
-		const { mode, sHeight, tHeight, width } = this.props;
+		const { mode, sHeight, height, width } = this.props;
 
 		let target = [], targetArea = [];
 		if (data && data.target) {
@@ -82,7 +82,7 @@ class MultiTransfer extends Component {
 
 		let leftStyle = {}, rightStyle = {};
 		let bodyWidth = Number(width+'');
-		let lHeight, rHeight = Number(tHeight+'');
+		let lHeight, rHeight = Number(height+'');
 		let num = target.length;
 		if (mode === 'auto') {
 			if (num === 0) {
