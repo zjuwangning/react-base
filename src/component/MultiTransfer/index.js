@@ -26,20 +26,17 @@ class MultiTransfer extends Component {
 			]
 		},
 		// 主框样式
-		leftStyle: {
-			width: 300,
-			height: 545
-		},
-		// 从框样式
-		rightStyle: {
-			width: 300,
-			height: 150
-		},
+		mode: 'auto',   // 高度模式 默认为auto自动计算 根据目标框体的高度自动计算源框体高度
+		sHeight: 180,   // 源框体高度 当mode为auto时无效
+		tHeight: 180,   // 目标框体高度
+		width: 300,     // 框体宽度
 	};
 	static propTypes = {
 		data: PropTypes.object,
-		leftStyle: PropTypes.object,
-		rightStyle: PropTypes.object,
+		mode: PropTypes.string,
+		sHeight: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
+		tHeight: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
+		width: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
 	};
 
 	constructor(props) {
@@ -70,16 +67,37 @@ class MultiTransfer extends Component {
 		return null;
 	}
 
-
+	//
 
 
 
 	render() {
 		const { data } = this.state;
-		const { leftStyle, rightStyle } = this.props;
+		const { mode, sHeight, tHeight, width } = this.props;
 
-		const leftSt = Object.assign({}, leftStyle)
-		const rightSt = Object.assign({}, rightStyle)
+		let target = [], targetArea = [];
+		if (data && data.target) {
+			target = data.target
+		}
+
+		let leftStyle = {}, rightStyle = {};
+		let bodyWidth = Number(width+'');
+		let lHeight, rHeight = Number(tHeight+'');
+		let num = target.length;
+		if (mode === 'auto') {
+			if (num === 0) {
+				lHeight = 300
+			}
+			else {
+				lHeight = (rHeight+10)*num-10
+			}
+		}
+		else {
+			lHeight = Number(sHeight+'')
+		}
+
+		leftStyle = {width: bodyWidth, height: lHeight}
+		rightStyle = {width: bodyWidth, height: rHeight}
 
 		let sourceTitle = '源数据', sourceColumns = []
 		if (data && data.source && data.source.title) {
@@ -89,10 +107,6 @@ class MultiTransfer extends Component {
 			sourceColumns = data.source.columns
 		}
 
-		let target = [], targetArea = [];
-		if (data && data.target) {
-			target = data.target
-		}
 		for (let k in target) {
 			let targetTitle = '源数据'
 			if (target && target[k] && target[k].title) {
@@ -117,12 +131,12 @@ class MultiTransfer extends Component {
 						</div>
 					</Col>
 					<Col>
-						<div className={'reid-transfer-right-box'}>
+						<div className={'reid-transfer-right-box'} style={rightStyle}>
 							<Row className={'reid-transfer-title'} type={'flex'} justify={'space-between'}>
 								<Col>已选{}项</Col>
-								<Col>{targetTitle}</Col>
+								<Col>{targetTitle}&nbsp;<Button type={'link'}>删除</Button></Col>
 							</Row>
-							<div style={rightSt}>
+							<div>
 
 							</div>
 						</div>
@@ -135,12 +149,12 @@ class MultiTransfer extends Component {
 		return (
 			<Row className={'reid-transfer-wrapper'} type={'flex'}>
 				<Col>
-					<div className={'reid-transfer-left-box'}>
+					<div className={'reid-transfer-left-box'} style={leftStyle}>
 						<Row className={'reid-transfer-title'} type={'flex'} justify={'space-between'}>
 							<Col>已选{}项</Col>
 							<Col>{sourceTitle}</Col>
 						</Row>
-						<div style={leftSt}>
+						<div>
 							<Table
 								style={{}}
 								size={'small'}

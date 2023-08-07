@@ -26,16 +26,19 @@ function Index() {
 		},
 		target: [
 			{
+				index: 'data',
 				title: '数据盘',
 				columns: columns,
 				dataSource: []
 			},
 			{
+				index: 'cache',
 				title: '缓存盘',
 				columns: columns,
 				dataSource: []
 			},
 			{
+				index: 'spare',
 				title: '热备盘',
 				columns: columns,
 				dataSource: []
@@ -45,7 +48,7 @@ function Index() {
 
 	return (
 		<div className={'full-page'}>
-			Ant Design 的 Transfer 穿梭框组件只支持两栏中移动，无法应对一对多及多对多的数据排列场景。
+			Ant Design 的 Transfer 穿梭框组件只支持一对一的两栏中移动，无法应对一对多及多对多的数据排列场景。
 			<div style={{height: '30px'}}/>
 			<MultiTransfer data={data}/>
 		</div>
